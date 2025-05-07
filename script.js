@@ -1,8 +1,8 @@
 // This file checks if choculaterie.com is reachable and updates the HTML accordingly.
 
 // Base URL configuration
-//const BASE_URL = 'https://choculaterie.com'; // Change this for local testing
-const BASE_URL = 'https://localhost:7282'; // Uncomment for local development
+const BASE_URL = 'https://choculaterie.com'; // Change this for local testing
+//const BASE_URL = 'https://localhost:7282'; // Uncomment for local development
 
 const endpoints = {
     website: `${BASE_URL}`,
@@ -33,7 +33,7 @@ function checkWebsite(service) {
             updateLastCheckedTime();
         })
         .catch(error => {
-            result.textContent = `Website unreachable: ${error.message}`;
+            result.textContent = 'Website unreachable';
             result.className = 'result error';
             indicator.className = 'status-indicator offline';
             updateLastCheckedTime();
@@ -61,7 +61,7 @@ function checkDatabase(service) {
             updateLastCheckedTime();
         })
         .catch(error => {
-            result.textContent = `Database error: ${error.message}`;
+            result.textContent = 'Database error';
             result.className = 'result error';
             indicator.className = 'status-indicator offline';
             updateDetails(service, { details: { serverName: '-', isConnected: false } });
@@ -136,7 +136,7 @@ function checkApiHealth(service) {
             updateLastCheckedTime();
         })
         .catch(error => {
-            result.textContent = `API error: ${error.message}`;
+            result.textContent = 'API error';
             result.className = 'result error';
             indicator.className = 'status-indicator offline';
             updateLastCheckedTime();
