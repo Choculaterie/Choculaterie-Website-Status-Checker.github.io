@@ -8,10 +8,10 @@
     <meta content="Choculaterie Status Checker" property="og:title">
     <meta content="Check the current status of choculaterie.com" property="og:description">
     <meta content="https://status.choculaterie.com" property="og:url">
-    <meta content="./images/server_logo.png" property="og:image">
+    <meta content="https://status.choculaterie.com/images/server_logo.png" property="og:image">
     <meta content="#FFD9E5" data-react-helmet="true" name="theme-color">
 
-    <link rel="icon" href="./images/server_logo.png" type="image/png">
+    <link rel="icon" href="https://status.choculaterie.com/images/server_logo.png" type="image/png">
     <title>Choculaterie Status</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
     <link rel="stylesheet" href="style.css">
@@ -23,10 +23,65 @@
         <i class="fas fa-moon" aria-hidden="true"></i>
     </button>
     <main class="main">
-        <div class="status-indicator" id="status-indicator"></div>
-        <h1 style="color: rgb(255, 217, 229);">choculaterie.com</h1>
-        <div id="result" class="result">Checking status...</div>
-        <button id="check-button" class="check-button">Check Again</button>
+        <div class="status-grid">
+            <!-- Website Status -->
+            <div class="status-item">
+                <div class="status-indicator" id="website-indicator"></div>
+                <h2>Website</h2>
+                <div id="website-result" class="result">Checking...</div>
+                <div class="details">
+                    <p>URL: <span id="website-url"></span></p>
+                    <p>Response Time: <span id="website-response-time">-</span></p>
+                </div>
+            </div>
+
+            <!-- API Status -->
+            <div class="status-item">
+                <div class="status-indicator" id="api-indicator"></div>
+                <h2>API Server</h2>
+                <div id="api-result" class="result">Checking...</div>
+                <div class="details">
+                    <p>Endpoint: <span id="api-endpoint"></span></p>
+                    <p>Response Time: <span id="api-response-time">-</span></p>
+                </div>
+            </div>
+
+            <!-- Database Status -->
+            <div class="status-item">
+                <div class="status-indicator" id="database-indicator"></div>
+                <h2>Database</h2>
+                <div id="database-result" class="result">Checking...</div>
+                <div class="details">
+                    <p>Server: <span id="database-server">-</span></p>
+                    <p>Connection: <span id="database-connection">-</span></p>
+                </div>
+            </div>
+
+            <!-- Services Status -->
+            <div class="status-item">
+                <div class="status-indicator" id="dotnet-indicator"></div>
+                <h2>System Services</h2>
+                <div id="dotnet-result" class="result">Checking...</div>
+                <div class="details service-details">
+                    <div id="service-choculaterie" class="service-item">
+                        <span class="service-name">Choculaterie:</span>
+                        <span class="service-status">-</span>
+                    </div>
+                    <div id="service-nginx" class="service-item">
+                        <span class="service-name">Nginx:</span>
+                        <span class="service-status">-</span>
+                    </div>
+                    <div id="service-mssql-server" class="service-item">
+                        <span class="service-name">MSSQL:</span>
+                        <span class="service-status">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="check-button" class="check-button">Check All Services</button>
+        <div class="last-check">
+            Last checked: <span id="last-check-time">Never</span>
+        </div>
     </main>
     <script src="script.js"></script>
 </body>
