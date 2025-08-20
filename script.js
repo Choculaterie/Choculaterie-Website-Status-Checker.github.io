@@ -66,7 +66,7 @@ function checkDatabase(service) {
             result.textContent = 'Database error';
             result.className = 'result error';
             indicator.className = 'status-indicator offline';
-            updateDetails(service, { details: { serverName: '-', isConnected: false } });
+            updateDetails(service, { details: { isConnected: false } });
             updateLastCheckedTime();
         });
 }
