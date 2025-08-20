@@ -43,6 +43,7 @@ function checkWebsite(service) {
 function checkDatabase(service) {
     const indicator = document.getElementById(`${service}-indicator`);
     const result = document.getElementById(`${service}-result`);
+    const startTime = performance.now();
 
     indicator.className = 'status-indicator loading';
     result.textContent = 'Checking database...';
@@ -50,11 +51,12 @@ function checkDatabase(service) {
     fetch(endpoints[service])
         .then(response => response.json())
         .then(data => {
+            const responseTime = Math.round(performance.now() - startTime);
             if (data.status === 'healthy') {
                 result.textContent = 'Database is connected';
                 result.className = 'result success';
                 indicator.className = 'status-indicator online';
-                updateDetails(service, data);
+                updateDetails(service, { ...data, responseTime });
             } else {
                 throw new Error(data.error || 'Database check failed');
             }
@@ -314,9 +316,11 @@ function updateDetails(service, data) {
             break;
         case 'database':
             if (data.details) {
-                document.getElementById('database-server').textContent = data.details.serverName;
                 document.getElementById('database-connection').textContent =
                     data.details.isConnected ? 'Connected' : 'Disconnected';
+            }
+            if (data.responseTime) {
+                document.getElementById('database-response-time').textContent = `${data.responseTime}ms`;
             }
             break;
     }
