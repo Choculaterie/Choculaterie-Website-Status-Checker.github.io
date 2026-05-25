@@ -1,0 +1,82 @@
+@font-face {
+    font-family: "Minecraft";
+    src: url("fonts/MinecraftRegular-Bmg3.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100vh;
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: "Minecraft", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+    text-align: center;
+}
+
+.content-wrap {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+p {
+    margin: 0 0 1rem;
+    color: #8b949e;
+    font-size: 0.95rem;
+    max-width: 36rem;
+    line-height: 1.6;
+}
+
+#status-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    width: min(100%, 34rem);
+    display: grid;
+    gap: 0.5rem;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 0.95rem;
+}
+
+.status-item span:last-child {
+    font-variant-numeric: tabular-nums;
+    min-width: 3.5rem;
+    text-align: right;
+}
+
+.status-item.up {
+    color: #3fb950;
+}
+
+.status-item.down {
+    color: #ff7b72;
+}
+
+.status-item.checking {
+    color: #58a6ff;
+}
